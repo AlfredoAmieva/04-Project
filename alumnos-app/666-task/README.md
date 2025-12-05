@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+Descripción de la estructura del proyecto y de sus componentes
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto es una pequeña aplicación de gestión de asistencia creada con React, Vite, TypeScript y Tailwind CSS. La idea principal es mostrar una lista de estudiantes, permitir cambiar su estado (present, absent, late) y visualizar un resumen general.
 
-Currently, two official plugins are available:
+La estructura está pensada para que sea fácil entender dónde está cada parte y para que el código sea lo más claro posible.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Estructura general del proyecto
+src/
+  components/
+  data/
+  types/
+  App.tsx
+  main.tsx
 
-## React Compiler
+components/
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Contiene todos los elementos visuales que se usan en la aplicación: el encabezado, las tarjetas de resumen y las tarjetas individuales de estudiantes. Cada componente se encarga de una sola cosa para que el código sea más sencillo de mantener.
 
-## Expanding the ESLint configuration
+data/
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Incluye el archivo students.js, donde están definidos los alumnos. Esto permite separar los datos de la lógica de la aplicación y facilita cambiar la fuente de información en el futuro si se quisiera usar una API real.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+types/
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Define las interfaces de TypeScript que se usan en la aplicación. Esto ayuda a tener más control sobre los datos y evitar errores al programar.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+App.tsx
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Es el componente principal. Se encarga de cargar los estudiantes, calcular las estadísticas, gestionar los cambios de estado y distribuir los distintos elementos visuales de la página.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+main.tsx
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Es el punto de entrada donde se monta la aplicación en el navegador.
+
+Componentes principales
+Header
+
+Encargado de mostrar la parte superior de la aplicación. Es simple y solo contiene el título y un icono de usuario.
+
+SummaryCards
+
+Muestra los totales: número de estudiantes, cuántos están presentes, ausentes y retrasados. Es una forma rápida de ver la situación global.
+
+StudentCard
+
+La tarjeta de cada alumno. Incluye su foto, nombre, identificador, estado actual y los botones para cambiarlo. Se adapta al tamaño de la pantalla.
+
+StatusBadge
+
+Indica visualmente el estado del alumno. Es pequeño pero importante para que la interfaz sea clara y fácil de leer.
+
+Filosofía de las herramientas utilizadas
+
+El proyecto usa varias tecnologías modernas que facilitan el desarrollo:
+
+React permite dividir la interfaz en componentes reutilizables.
+
+TypeScript ayuda a trabajar con datos de forma más segura, evitando errores comunes.
+
+Vite acelera el desarrollo con recarga rápida y una configuración mínima.
+
+Tailwind CSS permite escribir estilos directamente en las clases de los elementos, lo que simplifica el diseño y evita manejar muchos archivos de estilos.
+
+La idea general detrás de estas herramientas es reducir la complejidad innecesaria y centrarse en crear una aplicación que funcione bien y que sea fácil de mantener.
