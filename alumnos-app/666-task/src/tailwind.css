@@ -1,0 +1,6 @@
+/* Indicamos dónde buscar clases (React, TSX, etc.) */
+@source "../index.html";
+@source "./**/*.{ts,tsx,js,jsx}";
+
+/* Importamos Tailwind 4 */
+@import "tailwindcss";
