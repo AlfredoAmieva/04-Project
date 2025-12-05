@@ -9,7 +9,7 @@ El diseño está basado en los ejemplos proporcionados por el profesor y adaptad
 
 Antes de instalar el proyecto, es necesario disponer de:
 
-Node.js (versión recomendada: 18 o superior)
+Node.js (versión recomendada: 20.19.0 o superior en Debian Bookworm)
 
 Puede descargarse desde:
 
