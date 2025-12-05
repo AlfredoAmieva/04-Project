@@ -61,14 +61,6 @@ Estas herramientas permiten generar el CSS final, compilar los archivos TypeScri
 
 Tailwind se compila utilizando el CLI oficial.
 
-Durante el desarrollo, se debe ejecutar:
-
-npm run tailwind
-
-
-Este comando observa los archivos del proyecto y genera el archivo CSS final dentro de src/index.css.
-
-Este proceso debe estar activo mientras se desarrolla la aplicación.
 
 5. Ejecución del servidor de desarrollo
 
